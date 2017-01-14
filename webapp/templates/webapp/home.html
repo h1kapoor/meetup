@@ -1,0 +1,96 @@
+{% extends "webapp/header.html" %}
+
+{% block content %}
+	<div class="container" style="margin-top:75px">
+		<div class="row text-center">
+			<h1 style="margin-bottom:50px">Create new Meetup!</h1>
+		</div>
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+
+				<div class="row text-center">
+				  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" style="margin-bottom:30px">
+
+				  <input id="pac-input" type="text" class="form-control" placeholder="Enter Destination" aria-describedby="basic-addon1" style="margin-bottom:20px">
+
+					<script>
+					      // This example adds a search box to a map, using the Google Place Autocomplete
+					      // feature. People can enter geographical searches. The search box will return a
+					      // pick list containing a mix of places and predicted search terms.
+
+					      // This example requires the Places library. Include the libraries=places
+					      // parameter when you first load the API. For example:
+					      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+					      function initAutocomplete() {
+					        // Create the search box and link it to the UI element.
+					        var input = document.getElementById('pac-input');
+					        var searchBox = new google.maps.places.SearchBox(input);
+
+					        var markers = [];
+					        // Listen for the event fired when the user selects a prediction and retrieve
+					        // more details for that place.
+					        searchBox.addListener('places_changed', function() {
+					          var places = searchBox.getPlaces();
+
+					          if (places.length == 0) {
+					            return;
+					          }
+
+					          // Clear out the old markers.
+					          markers.forEach(function(marker) {
+					            marker.setMap(null);
+					          });
+					          markers = [];
+
+					          // For each place, get the icon, name and location.
+					          var bounds = new google.maps.LatLngBounds();
+					          places.forEach(function(place) {
+					            if (!place.geometry) {
+					              console.log("Returned place contains no geometry");
+					              return;
+					            }
+					            var icon = {
+					              url: place.icon,
+					              size: new google.maps.Size(71, 71),
+					              origin: new google.maps.Point(0, 0),
+					              anchor: new google.maps.Point(17, 34),
+					              scaledSize: new google.maps.Size(25, 25)
+					            };
+
+
+					            if (place.geometry.viewport) {
+					              // Only geocodes have viewport.
+					              bounds.union(place.geometry.viewport);
+					            } else {
+					              bounds.extend(place.geometry.location);
+					            }
+					          });
+					          map.fitBounds(bounds);
+					        });
+					      }
+
+					    </script>
+					    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
+					         async defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<a class="btn btn-primary" href="/loggedIn" role="button">Continue</a>
+				</div>
+		</div>
+
+		<div class="col-sm-4"></div>
+	</div>
+
+{% endblock %}

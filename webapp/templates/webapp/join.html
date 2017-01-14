@@ -1,0 +1,22 @@
+{% extends "webapp/header.html" %}
+
+{% block content %}
+
+<div class="container" style="margin-top:75px">
+	<div class="row text-center">
+		<h1 style="margin-bottom:50px">Join existing Meetup!</h1>
+	</div>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<div class="row text-center">
+			<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" style="margin-bottom:30px">
+
+			<input type="text" class="form-control" placeholder="Enter Friend's Username" aria-describedby="basic-addon1" style="margin-bottom:20px">
+
+			<a class="btn btn-primary" href="/loggedIn" role="button">Continue</a>
+		</div>
+	</div>
+
+	<div class="col-sm-4"></div>
+</div>
+{% endblock %}
