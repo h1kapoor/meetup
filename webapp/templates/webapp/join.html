@@ -2,21 +2,49 @@
 
 {% block content %}
 
-<div class="container" style="margin-top:75px">
+<div id="join-main" class="container" style="margin-top:75px; margin-bottom:75px; background-color:rgba(255,255,255,0.5); width:40%; border-radius:10px">
 	<div class="row text-center">
 		<h1 style="margin-bottom:50px">Join existing Meetup!</h1>
 	</div>
-	<div class="col-sm-4"></div>
-	<div class="col-sm-4">
-		<div class="row text-center">
-			<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" style="margin-bottom:30px">
+	<div>
+		<div class="row text-center" style="padding-left:60px; padding-right:60px">
+			<input id="joinuserId" type="text" class="form-control" placeholder="Your Name" aria-describedby="basic-addon1" style="margin-bottom:20px">
+			<input id="org-input" type="text" class="form-control" placeholder="Enter Current Position" aria-describedby="basic-addon1" style="margin-bottom:20px">
+			<input id="frienduserId" type="text" class="form-control" placeholder="Enter Friend's Name" aria-describedby="basic-addon1" style="margin-bottom:20px">
 
-			<input type="text" class="form-control" placeholder="Enter Friend's Username" aria-describedby="basic-addon1" style="margin-bottom:20px">
+			<script>
+						// This example adds a search box to a map, using the Google Place Autocomplete
+						// feature. People can enter geographical searches. The search box will return a
+						// pick list containing a mix of places and predicted search terms.
 
-			<a class="btn btn-primary" href="/loggedIn" role="button">Continue</a>
+						// This example requires the Places library. Include the libraries=places
+						// parameter when you first load the API. For example:
+						// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+						function initAutocomplete() {
+							// Create the search box and link it to the UI element.
+							var input1 = document.getElementById('org-input');
+							var searchBox1 = new google.maps.places.SearchBox(input1);
+						}
+
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key='your google api key here'&libraries=places&callback=initAutocomplete"
+							 async defer></script>
+
+			<a class="btn btn-primary" style="margin-bottom:20px;" href="#" role="button" onclick="user2Submit();">Continue</a>
 		</div>
 	</div>
+</div>
 
-	<div class="col-sm-4"></div>
+<div class="col-sm-offset-4" id="leave" style="display:none">
+	<div class="row text-center" style="margin-top:250px; background-color:rgba(255,255,255,0.5); width:60%; border-radius:10px">
+		<h3 style="margin-bottom: 20px">It will take you longer to reach. Leave first!</h3>
+	</div>
+</div>
+
+<div class="col-sm-offset-5" id="wait" style="display:none">
+	<div class="row text-center" style="margin-top:250px; background-color:rgba(255,255,255,0.5); width:40%; border-radius:10px">
+		<h3 id="timeToLeave" style="margin-bottom: 20px">Wait! Leave in <span id="countdown"></span> minutes!</h3>
+	</div>
 </div>
 {% endblock %}
